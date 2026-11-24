@@ -1,0 +1,346 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* App Background with Light Green Gradient */
+.app-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+  padding: 20px;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Chat Container - Premium Glass Effect */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 100%;
+  max-width: 900px;
+  background: rgba(243, 254, 247, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(16, 185, 129, 0.15),
+    0 0 1px rgba(16, 185, 129, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  overflow: hidden;
+  padding: 28px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(6, 78, 59, 0.1);
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #064e3b;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #4b9b7f;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Messages Area */
+.response {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-right: 8px;
+}
+
+/* Custom Scrollbar */
+.response::-webkit-scrollbar {
+  width: 6px;
+}
+
+.response::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.response::-webkit-scrollbar-thumb {
+  background: rgba(6, 78, 59, 0.2);
+  border-radius: 3px;
+}
+
+.response::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 78, 59, 0.4);
+}
+
+/* Suggested Questions */
+.suggested-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 20px;
+}
+
+.suggestion-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #064e3b;
+  margin-bottom: 12px;
+}
+
+.suggestion-btn {
+  width: 100%;
+  max-width: 400px;
+  padding: 14px 20px;
+  border: 2px solid #10b981;
+  background: white;
+  color: #064e3b;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.suggestion-btn:hover {
+  background: #f0fdf4;
+  border-color: #059669;
+  transform: translateX(4px);
+}
+
+.suggestion-btn:active {
+  transform: translateX(4px) scale(0.98);
+}
+
+/* Messages */
+.message {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  animation: fadeIn 0.5s ease;
+  max-width: 85%;
+}
+
+.message.user {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.message.bot {
+  align-self: flex-start;
+}
+
+.message-content {
+  padding: 12px 16px;
+  border-radius: 16px;
+  word-wrap: break-word;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.message.user .message-content {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.message.bot .message-content {
+  background: #f3f4f6;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 4px;
+}
+
+.user-icon {
+  font-size: 20px;
+  opacity: 0;
+  animation: slideInIcon 0.5s ease 0.2s forwards;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInIcon {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.textarea-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-field {
+  flex: 1;
+  resize: none;
+  padding: 12px 14px;
+  border: 2px solid #d1fae5;
+  border-radius: 12px;
+  background: white;
+  font-family: inherit;
+  font-size: 14px;
+  color: #1f2937;
+  transition: all 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(6, 78, 59, 0.2) transparent;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  background: #fafffe;
+}
+
+.input-field::placeholder {
+  color: #9ca3af;
+}
+
+.helper-text {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-left: 2px;
+  transition: color 0.3s ease;
+}
+
+.input-field:focus ~ .helper-text {
+  color: #10b981;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 12px 28px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: white;
+  color: #10b981;
+  border: 2px solid #10b981;
+  padding: 10px 20px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #f0fdf4;
+  border-color: #059669;
+  color: #059669;
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-container {
+    max-width: 100%;
+    height: 100vh;
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .message {
+    max-width: 95%;
+  }
+
+  .suggestion-btn {
+    max-width: 100%;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+}
+
+.input-area textarea::placeholder {
+  color: #9ca3af;
+  font-size: 14px;
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+}

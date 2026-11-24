@@ -1,0 +1,62 @@
+<div class="app-background">
+  <div class="chat-container">
+    
+    <!-- Header -->
+    <div class="header">
+      <h1>🌿 GreenLeaf Assistant v {{ version }}</h1>
+      <p class="subtitle">Your AI-powered HR Agent</p>
+    </div>
+
+    <!-- Messages Area -->
+    <div class="response">
+      <!-- Suggested Questions (shown when no messages) -->
+      <div class="suggested-questions" *ngIf="messages.length === 0">
+        <p class="suggestion-title">Frequently Asked Questions</p>
+        <button 
+          *ngFor="let question of suggestedQuestions" 
+          class="suggestion-btn"
+          (click)="submitQuestion(question)">
+          {{ question }}
+        </button>
+      </div>
+
+      <!-- Messages -->
+      <div *ngFor="let msg of messages" [ngClass]="['message', msg.role]">
+        <div class="message-content">{{ msg.text }}</div>
+        <span *ngIf="msg.role === 'user'" class="user-icon">😊</span>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <div class="textarea-wrapper">
+        <textarea
+          [(ngModel)]="question"
+          (keydown)="onKeyDown($event)"
+          rows="2"
+          placeholder="Ask a question about HR policies, holidays, or expenses..."
+          class="input-field"
+        ></textarea>
+        <span class="helper-text">Press Enter to send</span>
+      </div>
+
+      <div class="button-group">
+        <button 
+          (click)="submit()" 
+          class="btn btn-primary"
+          [disabled]="loading">
+          {{ loading ? 'Thinking...' : 'Ask' }}
+        </button>
+        <button 
+          *ngIf="messages.length > 0"
+          (click)="retryLast()" 
+          class="btn btn-secondary"
+          [disabled]="loading"
+          title="Repeat the last question">
+          ↻ Retry Last
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

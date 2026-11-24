@@ -1,0 +1,12 @@
+.venv
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.env
+
+# Generated output files
+holidays_*.json
+backend/.DS_Store
+.DS_Store
